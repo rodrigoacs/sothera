@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Imagens</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <aside class="sidebar">
+        <h2>Imagens Disponíveis</h2>
+        <p>Clique em uma imagem para comparar.</p>
+        <div id="folderStats" class="stats-box"></div>
+        <ul id="imageList"></ul>
+      </aside>
+      <main class="content">
+        <div id="welcomeMessage" class="welcome-message">
+          <h1>Selecione uma imagem da lista ao lado para começar a comparação.</h1>
+        </div>
+        <div id="comparisonContainer" class="comparison-container hidden">
+          <div id="originalCard" class="image-card"></div>
+          <div id="optimizedCard" class="image-card"></div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
