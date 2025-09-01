@@ -33,17 +33,24 @@ fs.readdir(INPUT_DIR, (err, files) => {
     return
   }
 
-  const promises = imageFiles.map(async file => {
+  let count = 0
+
+  const promises = imageFiles.map(file => {
     const inputFile = path.join(INPUT_DIR, file)
     const outputFile = path.join(OUTPUT_DIR, `${path.parse(file).name}.avif`)
 
     try {
-      return await sharp(inputFile)
+      return sharp(inputFile)
         .resize({ width: MAX_WIDTH, height: MAX_HEIGHT, withoutEnlargement: true, fit: 'inside' })
         .avif({ quality: QUALITY, effort: EFFORT })
         .toFile(outputFile)
+        .then(() => {
+          console.log(`processando ${++count} de ${imageFiles.length}: ${file}`)
+        })
     } catch (err) {
       return console.error(`Erro ao processar ${file}:`, err)
+    } finally {
+
     }
   })
 
